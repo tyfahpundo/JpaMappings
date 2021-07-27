@@ -1,17 +1,14 @@
 package zw.co.afrosoft.jpamappings.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import zw.co.afrosoft.jpamappings.request.EmployeeRequest;
 
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +20,12 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+    public Employee(EmployeeRequest req){
+        this.name = req.getName();
+    }
+
+    public Employee() {
+
+    }
 }
