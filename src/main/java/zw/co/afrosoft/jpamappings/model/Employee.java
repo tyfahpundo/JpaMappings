@@ -5,10 +5,11 @@ import zw.co.afrosoft.jpamappings.request.EmployeeRequest;
 
 import javax.persistence.*;
 
-@Entity
-@Getter
-@Setter
+
+@AllArgsConstructor
+@Data
 @ToString
+@Entity
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +18,9 @@ public class Employee {
     private String name;
 
     //Reference variable for the department
-    @OneToOne
+
     @JoinColumn(name = "department_id")
+    @OneToOne
     private Department department;
 
     public Employee(EmployeeRequest req){
